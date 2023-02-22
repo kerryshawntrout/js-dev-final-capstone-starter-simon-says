@@ -60,6 +60,7 @@ let roundCount = 0; // track the number of rounds that have been played so far
  */
 
 padContainer.addEventListener("click", padHandler);
+startButton.addEventListener("click",startButtonHandler);
 // TODO: Add an event listener `startButtonHandler()` to startButton.
 
 /**
@@ -82,7 +83,12 @@ padContainer.addEventListener("click", padHandler);
  */
 function startButtonHandler() {
   // TODO: Write your code here.
+setLevel();
 
+roundCount = roundCount + 1;
+startButton.classList.add("hidden");
+statusSpan.classList.remove("hidden");
+playComputerTurn();
   return { startButton, statusSpan };
 }
 
@@ -138,7 +144,14 @@ function padHandler(event) {
  */
 function setLevel(level = 1) {
   // TODO: Write your code here.
-}
+  //if(level <5 && level > 0){ 
+    
+  //setText(statusSpan, "Level "+ level);
+  }
+  //else {
+   // setText(statusSpan, "Please enter level 1, 2, 3, or 4") ;
+ // }
+//}
 
 /**
  * Returns a randomly selected item from a given array.
@@ -156,9 +169,9 @@ function setLevel(level = 1) {
  * getRandomItem([1, 2, 3, 4]) //> returns 1
  */
 function getRandomItem(collection) {
-  // if (collection.length === 0) return null;
-  // const randomIndex = Math.floor(Math.random() * collection.length);
-  // return collection[randomIndex];
+  if (collection.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * collection.length);
+  return collection[randomIndex];
 }
 
 /**
@@ -166,7 +179,8 @@ function getRandomItem(collection) {
  */
 function setText(element, text) {
   // TODO: Write your code here.
-  return element;
+  element.textContent=text;
+  return element.textContent;
 }
 
 /**
@@ -184,6 +198,10 @@ function setText(element, text) {
 
 function activatePad(color) {
   // TODO: Write your code here.
+  //let pad = pads.find(color);
+  //pad.classList.add('activated');
+  //pad.sound;
+  //setTimeout(pad.classList.remove('activated'), 500)
 }
 
 /**
@@ -202,6 +220,8 @@ function activatePad(color) {
 
 function activatePads(sequence) {
   // TODO: Write your code here.
+  //let timer = 600;
+  //sequence.foreach(setTimeout(activatePad(element),timer));
 }
 
 /**
@@ -229,6 +249,9 @@ function activatePads(sequence) {
  */
  function playComputerTurn() {
   // TODO: Write your code here.
+//padContainer.classList.add("unclickable");
+//setText(statusSpan, "The computers turn...");
+//setText(heading, `Round ${roundCount} of ${maxRoundCount}`);
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
